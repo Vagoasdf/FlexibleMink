@@ -3,7 +3,7 @@
 namespace Tests\Medology\Behat\TypeCaster;
 
 use Medology\Behat\TypeCaster;
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 use Tests\TestCase;
 
 /**
@@ -13,7 +13,7 @@ use Tests\TestCase;
  */
 class CastStringToIntTest extends TestCase
 {
-    /** @var PHPUnit_Framework_MockObject_MockObject|TypeCaster */
+    /** @var MockObject|TypeCaster */
     private $typeCasterTraitMock;
 
     /**

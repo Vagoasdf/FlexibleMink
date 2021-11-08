@@ -11,13 +11,13 @@ use DateTime;
 use Exception;
 use Medology\Behat\DateInjector;
 use Medology\Behat\StoreContext;
-use PHPUnit_Framework_Error;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Error;
 use ReflectionProperty;
 use stdClass;
 use TypeError;
 
-class StoreContextTest extends PHPUnit_Framework_TestCase
+class StoreContextTest extends TestCase
 {
     /** @var StoreContext */
     protected $storeContext;
@@ -431,7 +431,7 @@ class StoreContextTest extends PHPUnit_Framework_TestCase
         if ($majorVersion >= 7) {
             $this->expectException(TypeError::class);
         } elseif ($majorVersion == 5 && $minorVersion == 6) {
-            $this->expectException(PHPUnit_Framework_Error::class);
+            $this->expectException(Error::class);
         } else {
             throw new Exception('This php version is not supported. PHP version must be >= 5.6');
         }
@@ -455,7 +455,7 @@ class StoreContextTest extends PHPUnit_Framework_TestCase
             $this->assertContains($expectedMessage, $e->getMessage());
 
             throw $e;
-        } catch (PHPUnit_Framework_Error $e) {
+        } catch (Error $e) {
             $this->assertContains($expectedMessage, $e->getMessage());
 
             throw $e;

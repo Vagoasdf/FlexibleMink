@@ -5,7 +5,7 @@ namespace Tests\Medology\Behat\Mink\FlexibleContext;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
 use Medology\Behat\Mink\FlexibleContext;
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 use Tests\TestCase;
 
 /**
@@ -13,13 +13,13 @@ use Tests\TestCase;
  */
 abstract class FlexibleContextTest extends TestCase
 {
-    /** @var Session|PHPUnit_Framework_MockObject_MockObject */
+    /** @var Session|MockObject */
     protected $sessionMock;
 
-    /** @var DocumentElement|PHPUnit_Framework_MockObject_MockObject */
+    /** @var DocumentElement|MockObject */
     protected $pageMock;
 
-    /** @var FlexibleContext|PHPUnit_Framework_MockObject_MockObject */
+    /** @var FlexibleContext|MockObject */
     protected $flexible_context;
 
     protected $flexible_context_mocked_methods = ['getSession'];

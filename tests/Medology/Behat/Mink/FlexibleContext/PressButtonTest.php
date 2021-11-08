@@ -9,7 +9,7 @@ use Behat\Mink\Exception\UnsupportedDriverActionException;
 use Behat\Mink\Session;
 use Exception;
 use Medology\Behat\Mink\FlexibleContext;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @covers \Medology\Behat\Mink\FlexibleContext::pressButton()

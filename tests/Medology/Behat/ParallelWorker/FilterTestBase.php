@@ -6,15 +6,15 @@ use Behat\Gherkin\Keywords\ArrayKeywords;
 use Behat\Gherkin\Lexer;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Parser;
-use PHPUnit_Framework_AssertionFailedError;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class FilterTest.
  *
  * Base class for filter testing which sets up a Gherking Feature with several scenarios and a parser.
  */
-abstract class FilterTestBase extends PHPUnit_Framework_TestCase
+abstract class FilterTestBase extends TestCase
 {
     protected function getParser(): Parser
     {
@@ -74,12 +74,12 @@ GHERKIN;
     }
 
     /**
-     * @throws PHPUnit_Framework_AssertionFailedError if the parser returns null (it should never do this)
+     * @throws AssertionFailedError if the parser returns null (it should never do this)
      */
     protected function getParsedFeature(): FeatureNode
     {
         if (!$feature = $this->getParser()->parse($this->getGherkinFeature())) {
-            throw new PHPUnit_Framework_AssertionFailedError('Parser returned null when parsing out Gherkin fixture.');
+            throw new AssertionFailedError('Parser returned null when parsing out Gherkin fixture.');
         }
 
         return $feature;

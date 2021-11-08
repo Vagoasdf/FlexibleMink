@@ -5,20 +5,20 @@ namespace Tests\Medology\Behat\Mink\FlexibleContext;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Element\TraversableElement;
 use Behat\Mink\Exception\ExpectationException;
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 
 class ScrollToButtonTest extends FlexibleContextTest
 {
-    /** @var TraversableElement|PHPUnit_Framework_MockObject_MockObject */
+    /** @var TraversableElement|MockObject */
     protected $context;
 
-    /** @var NodeElement|PHPUnit_Framework_MockObject_MockObject */
+    /** @var NodeElement|MockObject */
     protected $element1;
 
-    /** @var NodeElement|PHPUnit_Framework_MockObject_MockObject */
+    /** @var NodeElement|MockObject */
     protected $element2;
 
-    /** @var NodeElement[]|PHPUnit_Framework_MockObject_MockObject[] */
+    /** @var NodeElement[]|MockObject[] */
     protected $expectedElements;
 
     protected $locator = 'button';
