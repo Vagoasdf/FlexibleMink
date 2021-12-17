@@ -4,6 +4,7 @@ namespace Medology\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Gherkin\Node\TableNode;
 use Chekote\NounStore\Assert;
 use Chekote\NounStore\Key;
 use Chekote\NounStore\Store;
@@ -250,11 +251,31 @@ class StoreContext extends Store implements Context, GathersContexts
     }
 
     /**
+     * Parses each TableNode cell for references to stored items and replaces them with the value from the store.
+     *
+     * @param TableNode $table a table node containing the values to parse
+     *
+     * @throws InvalidArgumentException if the string references something that does not exist in the store
+     * @throws InvalidArgumentException if callable $onGetFn does not take exactly one argument
+     * @throws InvalidArgumentException if callable $hasValue does not take exactly two arguments
+     * @throws InvalidArgumentException if callable $onGetFn returns something other than array, object or callable
+     * @throws OutOfBoundsException     if the specified stored item does not have the specified property or
+     *                                  key
+     * @throws ReflectionException      if $onGetFn was provided but the reflection API says it does not exist. This
+     *                                  should not be possible.
+     * @throws ReflectionException      if $hasValue was provided but the reflection API says it does not exist. This
+     *                                  should not be possible.     */
+    public function injectStoredValuesTable(TableNode $table): array
+    {
+        return array_values(array_map(function ($row) {
+            return array_map([$this, 'injectStoredValues'], $row);
+        }, $table->getRows()));
+    }
+
+    /**
      * Converts the property name used for reference to the actual key name.
      *
      * @param string $property the property name used to reference the key
-     *
-     * @return string
      */
     protected function parseProperty(string $property): string
     {

@@ -29,7 +29,7 @@ class CsvContext implements Context
      */
     public function assertThingIsCSVWithData(string $key, TableNode $table): void
     {
-        $expectedData = $table->getRows();
+        $expectedData = $this->storeContext->injectStoredValuesTable($table);
 
         // Use str_getcsv to first split the CSV data into rows, then again to process each row.
         $actualData = array_map('str_getcsv', str_getcsv($this->storeContext->get($key), "\n"));

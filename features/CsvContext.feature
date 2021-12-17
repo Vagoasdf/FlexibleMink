@@ -100,3 +100,15 @@ Feature: CSV Context
          | Favorite |
       Then the assertion should throw an Exception
        And the assertion should fail with the message "CSV 'spreadsheet' contains extra headers 'Type', 'Least Favorite'"
+
+    Scenario: Step injects values properly into CSV
+      Given the following is stored as "list":
+        | first_entry  | Line one   |
+        | second_entry | Line two   |
+        | third_entry  | Line three |
+      Given the following string is stored as "spreadsheet":
+          """
+          (the first entry of the list),(the second entry of the list),(the third entry of the list)
+          """
+      Then the "spreadsheet" should be CSV data as follows:
+        | Line one         | Line two    | Line three    |
